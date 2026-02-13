@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
 	title: string;
@@ -32,5 +33,6 @@ const { title, description = "Daniel Ramirez's Personal Portfolio" } = Astro.pro
 			<slot name="footer" />
 		</div>
 		<SpeedInsights />
+		<Analytics />
 	</body>
 </html>
