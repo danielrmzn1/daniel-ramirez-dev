@@ -52,11 +52,11 @@ const techStack = [
 				</div>
 
         <div class="mt-20 pt-10 border-t border-base-200">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-base-content/40 mb-8">Specialized In</p>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-base-content/40 mb-8 text-wrap-balance">Specialized In</p>
           <div class="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60">
             {techStack.map(tech => (
               <div class="flex items-center gap-2 group hover:opacity-100 transition-opacity">
-                <tech.icon size={20} class="text-primary" />
+                <tech.icon size={20} className="text-primary" />
                 <span class="font-bold tracking-tight text-sm">{tech.name}</span>
               </div>
             ))}

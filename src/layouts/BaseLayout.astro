@@ -20,6 +20,22 @@ const { title, description = "Daniel Ramirez's Personal Portfolio" } = Astro.pro
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<title>{title}</title>
+
+		<script is:inline>
+			const getTheme = () => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			};
+
+			const theme = getTheme();
+			document.documentElement.setAttribute('data-theme', theme);
+			document.documentElement.style.colorScheme = theme;
+		</script>
 	</head>
 	<body class="min-h-screen bg-base-100 font-sans antialiased">
 		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-base-100 focus:text-base-content">
@@ -32,7 +48,9 @@ const { title, description = "Daniel Ramirez's Personal Portfolio" } = Astro.pro
 			</main>
 			<slot name="footer" />
 		</div>
+		{/* @ts-ignore */}
 		<SpeedInsights />
+		{/* @ts-ignore */}
 		<Analytics />
 	</body>
 </html>

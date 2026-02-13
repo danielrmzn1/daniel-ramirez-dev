@@ -7,28 +7,60 @@ const links = [
 ];
 ---
 
-<header class="navbar bg-base-100/80 backdrop-blur sticky top-0 z-50 px-4 md:px-8 border-b border-base-200">
+<header class="navbar bg-base-100/80 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 border-b border-base-200">
   <div class="navbar-start">
     <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden" aria-label="Open navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      <div 
+        tabindex="0" 
+        role="button" 
+        class="btn btn-ghost btn-sm lg:hidden hover:bg-primary/10 transition-colors mr-2" 
+        aria-label="Open navigation menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h10M4 18h16" />
+        </svg>
       </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <ul 
+        tabindex="0" 
+        class="menu menu-md dropdown-content mt-4 z-[1] p-3 shadow-2xl bg-base-100/95 backdrop-blur-xl rounded-2xl w-64 border border-base-200 ring-1 ring-base-content/5"
+      >
+        <div class="px-4 py-2 mb-2">
+          <p class="text-[10px] font-black uppercase tracking-[0.2em] text-base-content/40">Navigation</p>
+        </div>
         {links.map(link => (
-          <li><a href={link.href}>{link.label}</a></li>
+          <li>
+            <a 
+              href={link.href} 
+              class="flex items-center justify-between py-3 px-4 rounded-xl hover:bg-primary/5 hover:text-primary active:bg-primary/10 transition-all font-medium group"
+            >
+              {link.label}
+              <span class="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-xs">→</span>
+            </a>
+          </li>
         ))}
       </ul>
     </div>
-    <a href="/" class="text-xl font-bold tracking-tighter">DANIEL.RAMIREZ</a>
+    <a href="/" class="text-xl font-black tracking-tighter hover:text-primary transition-colors">
+      DANIEL<span class="text-primary opacity-50">.</span>RAMIREZ
+    </a>
   </div>
+  
   <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1 gap-2">
+    <ul class="menu menu-horizontal px-1 gap-1">
       {links.map(link => (
-        <li><a href={link.href} class="rounded-lg">{link.label}</a></li>
+        <li>
+          <a 
+            href={link.href} 
+            class="rounded-lg px-4 py-2 font-medium hover:bg-primary/5 hover:text-primary transition-colors"
+          >
+            {link.label}
+          </a>
+        </li>
       ))}
     </ul>
   </div>
-  <div class="navbar-end">
+
+  <div class="navbar-end gap-2">
     <slot name="right" />
   </div>
 </header>
