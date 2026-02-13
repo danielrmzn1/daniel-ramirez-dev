@@ -11,12 +11,14 @@ export default function ThemeToggle() {
     
     setTheme(initialTheme);
     document.documentElement.setAttribute('data-theme', initialTheme);
+    document.documentElement.style.colorScheme = initialTheme;
   }, []);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
+    document.documentElement.style.colorScheme = newTheme;
     localStorage.setItem('theme', newTheme);
   };
 

@@ -21,19 +21,19 @@ const { title, description, tags, githubUrl, liveUrl, result } = Astro.props;
       </h3>
       <div class="flex gap-2">
         {githubUrl && (
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-xs btn-circle" aria-label="GitHub Repository">
-            <Github size={16} />
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-xs btn-circle" aria-label={`View GitHub repository for ${title}`}>
+            <Github size={16} aria-hidden="true" />
           </a>
         )}
         {liveUrl && (
-          <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-xs btn-circle" aria-label="Live Demo">
-            <ExternalLink size={16} />
+          <a href={liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-xs btn-circle" aria-label={`Visit live site for ${title}`}>
+            <ExternalLink size={16} aria-hidden="true" />
           </a>
         )}
       </div>
     </div>
     
-    <p class="text-base-content/70 text-sm mb-4 leading-relaxed">
+    <p class="text-base-content/70 text-sm mb-4 leading-relaxed text-pretty">
       {description}
     </p>
 

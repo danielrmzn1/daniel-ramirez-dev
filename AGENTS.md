@@ -21,3 +21,7 @@ For specific instructions, refer to the documents in the `.agents/docs/` directo
 - **[Development & Deployment](./.agents/docs/development.md):** DX standards and Vercel deployment procedures.
 - **[Best Practices](./.agents/docs/best-practices.md):** Decision-making, SEO, accessibility, and anti-patterns.
 - **[Scaffolding Guide](./.agents/docs/scaffolding.md):** Initial pages and components to create.
+
+## Custom Constraints
+
+- **Vercel Deployments:** NEVER trigger a Vercel deployment (preview or production) unless the user explicitly and clearly requests it. This is to manage deployment resources and costs.
