@@ -3,6 +3,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/astro/Navbar.astro';
 import Footer from '../components/astro/Footer.astro';
 import ThemeToggle from '../components/react/ThemeToggle';
+import ProjectCard from '../components/astro/ProjectCard.astro';
+import { Code2, Zap, Layout, ShieldCheck } from 'lucide-react';
+
+const featuredProjects = [
+  {
+    title: "High-Performance Portfolio",
+    description: "A developer portfolio focused on extreme performance and minimal client-side JS.",
+    tags: ["Astro", "React", "Tailwind", "Vercel"],
+    githubUrl: "https://github.com",
+    liveUrl: "https://daniel-ramirez-dev.vercel.app",
+    result: "Achieved 100/100 Lighthouse score across all metrics."
+  },
+  {
+    title: "E-Commerce Dashboard",
+    description: "Interactive analytics dashboard for real-time sales monitoring and inventory management.",
+    tags: ["React", "TypeScript", "TanStack Query", "Zustand"],
+    githubUrl: "https://github.com",
+    result: "Reduced dashboard data-load time by 60% using optimized caching."
+  }
+];
+
+const techStack = [
+  { name: "TypeScript", icon: Code2 },
+  { name: "React", icon: Layout },
+  { name: "Astro", icon: Zap },
+  { name: "Tailwind", icon: ShieldCheck }
+];
 ---
 
 <BaseLayout title="Daniel Ramirez | Frontend Engineer">
@@ -10,37 +37,53 @@ import ThemeToggle from '../components/react/ThemeToggle';
 		<ThemeToggle client:load slot="right" />
 	</Navbar>
 
-	<section class="hero min-h-[70vh] bg-base-100">
+	<section class="hero min-h-[85vh] bg-base-100 px-4">
 		<div class="hero-content text-center">
-			<div class="max-w-md">
-				<h1 class="text-5xl font-bold tracking-tighter">Hi, I'm Daniel</h1>
-				<p class="py-6 text-lg text-base-content/70">
-					A passionate Frontend Engineer specializing in building high-performance, accessible, and beautiful web experiences with Astro and React.
+			<div class="max-w-2xl">
+        <div class="badge badge-primary badge-outline mb-6 font-semibold tracking-wider px-4">AVAILABLE FOR WORK</div>
+				<h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-6">
+          I build web experiences <span class="text-primary italic">that scale.</span>
+        </h1>
+				<p class="py-6 text-xl text-base-content/70 leading-relaxed max-w-xl mx-auto">
+					Frontend Engineer specialized in high-performance architectures. I bridge the gap between design systems and scalable code.
 				</p>
-				<div class="flex gap-4 justify-center">
-					<a href="/projects" class="btn btn-primary">View Projects</a>
-					<a href="/contact" class="btn btn-outline">Get in Touch</a>
+				<div class="flex gap-4 justify-center mt-4">
+					<a href="/projects" class="btn btn-primary btn-lg px-8">View Work</a>
+					<a href="/contact" class="btn btn-outline btn-lg px-8">Get in Touch</a>
 				</div>
+
+        <div class="mt-20 pt-10 border-t border-base-200">
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-base-content/40 mb-8">Specialized In</p>
+          <div class="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60">
+            {techStack.map(tech => (
+              <div class="flex items-center gap-2 group hover:opacity-100 transition-opacity">
+                <tech.icon size={20} class="text-primary" />
+                <span class="font-bold tracking-tight text-sm">{tech.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 			</div>
 		</div>
 	</section>
 
-	<section class="py-20 px-4 md:px-8 bg-base-200">
+	<section class="py-24 px-4 md:px-8 bg-base-200">
 		<div class="max-w-6xl mx-auto">
-			<h2 class="text-3xl font-bold mb-12 text-center tracking-tight">Featured Projects</h2>
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{/* Project cards will go here */}
-				<div class="card bg-base-100 shadow-sm border border-base-300">
-					<div class="card-body">
-						<h3 class="card-title">Portfolio Website</h3>
-						<p>This very website! Built with Astro, React, and Tailwind CSS.</p>
-						<div class="card-actions justify-end mt-4">
-							<div class="badge badge-outline text-xs">Astro</div>
-							<div class="badge badge-outline text-xs">React</div>
-							<div class="badge badge-outline text-xs">Tailwind</div>
-						</div>
-					</div>
-				</div>
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <div class="max-w-lg">
+          <h2 class="text-4xl font-bold tracking-tight mb-4">Featured Work</h2>
+          <p class="text-base-content/60">A selection of projects where I solved complex problems through clean architecture and user-centric design.</p>
+        </div>
+        <a href="/projects" class="btn btn-ghost group">
+          View All Projects 
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+
+			<div class="grid md:grid-cols-2 gap-8">
+				{featuredProjects.map(project => (
+          <ProjectCard {...project} />
+        ))}
 			</div>
 		</div>
 	</section>
