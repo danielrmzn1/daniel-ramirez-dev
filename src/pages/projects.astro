@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/astro/Navbar.astro';
+import Footer from '../components/astro/Footer.astro';
+import ThemeToggle from '../components/react/ThemeToggle';
+---
+
+<BaseLayout title="Projects | Daniel Ramirez">
+	<Navbar slot="header">
+		<ThemeToggle client:load slot="right" />
+	</Navbar>
+
+	<section class="py-20 px-4 md:px-8 max-w-6xl mx-auto">
+		<h1 class="text-4xl font-bold mb-12 tracking-tight">Projects</h1>
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<div class="card bg-base-100 shadow-sm border border-base-300">
+				<div class="card-body">
+					<h3 class="card-title">Project One</h3>
+					<p>A description of the first project.</p>
+					<div class="card-actions justify-end mt-4">
+						<div class="badge badge-outline">TypeScript</div>
+						<div class="badge badge-outline">React</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/astro/Navbar.astro';
+import Footer from '../components/astro/Footer.astro';
+import ThemeToggle from '../components/react/ThemeToggle';
+---
+
+<BaseLayout title="About Me | Daniel Ramirez">
+	<Navbar slot="header">
+		<ThemeToggle client:load slot="right" />
+	</Navbar>
+
+	<section class="py-20 px-4 md:px-8 max-w-4xl mx-auto">
+		<h1 class="text-4xl font-bold mb-8 tracking-tight">About Me</h1>
+		<div class="prose prose-lg max-w-none text-base-content/80">
+			<p>
+				I am a frontend engineer with a deep interest in performance, accessibility, and modern web architectures.
+			</p>
+			<p>
+				My approach to development is centered around delivering the best possible user experience while maintaining a clean and scalable codebase. I love working with technologies like Astro, React, and Tailwind CSS.
+			</p>
+		</div>
+	</section>
+
+	<Footer slot="footer" />
+</BaseLayout>

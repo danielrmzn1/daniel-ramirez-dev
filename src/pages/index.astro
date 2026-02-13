@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/astro/Navbar.astro';
+import Footer from '../components/astro/Footer.astro';
+import ThemeToggle from '../components/react/ThemeToggle';
+---
+
+<BaseLayout title="Daniel Ramirez | Frontend Engineer">
+	<Navbar slot="header">
+		<ThemeToggle client:load slot="right" />
+	</Navbar>
+
+	<section class="hero min-h-[70vh] bg-base-100">
+		<div class="hero-content text-center">
+			<div class="max-w-md">
+				<h1 class="text-5xl font-bold tracking-tighter">Hi, I'm Daniel</h1>
+				<p class="py-6 text-lg text-base-content/70">
+					A passionate Frontend Engineer specializing in building high-performance, accessible, and beautiful web experiences with Astro and React.
+				</p>
+				<div class="flex gap-4 justify-center">
+					<a href="/projects" class="btn btn-primary">View Projects</a>
+					<a href="/contact" class="btn btn-outline">Get in Touch</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-20 px-4 md:px-8 bg-base-200">
+		<div class="max-w-6xl mx-auto">
+			<h2 class="text-3xl font-bold mb-12 text-center tracking-tight">Featured Projects</h2>
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{/* Project cards will go here */}
+				<div class="card bg-base-100 shadow-sm border border-base-300">
+					<div class="card-body">
+						<h3 class="card-title">Portfolio Website</h3>
+						<p>This very website! Built with Astro, React, and Tailwind CSS.</p>
+						<div class="card-actions justify-end mt-4">
+							<div class="badge badge-outline text-xs">Astro</div>
+							<div class="badge badge-outline text-xs">React</div>
+							<div class="badge badge-outline text-xs">Tailwind</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/astro/Navbar.astro';
+import Footer from '../components/astro/Footer.astro';
+import ThemeToggle from '../components/react/ThemeToggle';
+---
+
+<BaseLayout title="Contact | Daniel Ramirez">
+	<Navbar slot="header">
+		<ThemeToggle client:load slot="right" />
+	</Navbar>
+
+	<section class="py-20 px-4 md:px-8 max-w-4xl mx-auto">
+		<h1 class="text-4xl font-bold mb-8 tracking-tight">Get in Touch</h1>
+		<div class="card bg-base-200 shadow-sm">
+			<div class="card-body">
+				<p class="text-lg mb-6">
+					I'm always open to new opportunities and collaborations. Feel free to reach out!
+				</p>
+				<div class="flex flex-col gap-4">
+					<a href="mailto:hello@example.com" class="btn btn-primary">Email Me</a>
+					<div class="divider">OR</div>
+					<div class="flex gap-4 justify-center">
+						<a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+						<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Footer slot="footer" />
+</BaseLayout>
