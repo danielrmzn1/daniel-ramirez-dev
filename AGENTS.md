@@ -12,6 +12,11 @@ The following technologies are strict constraints:
 - **Styling:** Tailwind CSS with DaisyUI
 - **Deployment:** Vercel
 
+## Development
+
+- **Run Locally:** Use `pnpm dev` (or your preferred package manager) to start the Astro development server.
+- **Local URL:** The project runs at [http://localhost:4321](http://localhost:4321).
+
 ## Detailed Guidelines
 
 For specific instructions, refer to the documents in the `.agents/docs/` directory:
