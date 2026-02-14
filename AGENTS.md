@@ -25,3 +25,22 @@ For specific instructions, refer to the documents in the `.agents/docs/` directo
 ## Custom Constraints
 
 - **Vercel Deployments:** NEVER trigger a Vercel deployment (preview or production) unless the user explicitly and clearly requests it. This is to manage deployment resources and costs.
+
+## About Page Design Language
+
+The `about.astro` page implements a specific "Modern Engineering Portfolio" aesthetic that should be maintained:
+
+- **Typography:**
+  - Hero headers use extreme scale (`text-6xl` to `text-8xl`), heavy weight (`font-black`), and tight tracking (`tracking-tighter`) for impact.
+  - Body text uses a comfortable reading size (`text-xl`) with relaxed leading.
+  - Monospace fonts are used sparingly for dates and technical metadata to reinforce the engineering theme.
+
+- **Layout & Structure:**
+  - **Asymmetric Grid:** Uses a `grid-cols-12` system where content takes ~7 columns and metadata/decoration takes ~5 columns.
+  - **Sticky Sidebar:** Technical skills and certifications are kept in view using `sticky top-24` for better scanability during long scrolls.
+  - **Timeline Component:** Experience is presented in a connected vertical timeline with interactive accordion states (using React islands for smooth height animation).
+
+- **Visual Effects:**
+  - **Glassmorphism:** Secondary content boxes use `bg-base-200/50 backdrop-blur-sm` with thin borders (`border-base-content/5`) to create depth without heaviness.
+  - **Ambient Backgrounds:** Large, blurred, low-opacity gradient orbs (`blur-3xl`, `opacity-20`) provide subtle background movement and depth.
+  - **Gradients:** Text gradients (`bg-gradient-to-r from-primary to-secondary`) are reserved for key emphases like "SCALABLE".

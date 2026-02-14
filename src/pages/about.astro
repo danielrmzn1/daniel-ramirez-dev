@@ -2,25 +2,207 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/astro/Navbar.astro';
 import Footer from '../components/astro/Footer.astro';
-import ThemeToggle from '../components/react/ThemeToggle';
+import ThemeController from '../components/react/ThemeController';
+import TimelineItem from '../components/react/TimelineItem';
 ---
 
 <BaseLayout title="About Me | Daniel Ramirez">
-	<Navbar slot="header">
-		<ThemeToggle client:load slot="right" />
-	</Navbar>
+  <Navbar slot="header">
+    <ThemeController client:only="react" slot="right" />
+  </Navbar>
 
-	<section class="py-20 px-4 md:px-8 max-w-4xl mx-auto">
-		<h1 class="text-4xl font-bold mb-8 tracking-tight">About Me</h1>
-		<div class="prose prose-lg max-w-none text-base-content/80">
-			<p>
-				I am a frontend engineer with a deep interest in performance, accessibility, and modern web architectures.
-			</p>
-			<p>
-				My approach to development is centered around delivering the best possible user experience while maintaining a clean and scalable codebase. I love working with technologies like Astro, React, and Tailwind CSS.
-			</p>
-		</div>
-	</section>
+  <!-- Background decorative elements -->
+  <div class="fixed inset-0 -z-10 pointer-events-none opacity-20 dark:opacity-10 overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+  </div>
 
-	<Footer slot="footer" />
+  <section class="relative py-20 px-4 md:px-8 max-w-6xl mx-auto">
+    
+    <!-- Hero / Intro -->
+    <div class="grid md:grid-cols-12 gap-12 mb-24 items-start">
+        <div class="md:col-span-8">
+            <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-[0.9]">
+                BUILDING <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">SCALABLE</span> <br />
+                EXPERIENCES.
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-base-content/80 max-w-2xl leading-relaxed">
+                Senior Software Engineer obsessed with front-end performance, architectural clarity, and the intersection of human creativity and AI.
+            </p>
+        </div>
+        <!-- Decorative / Stats / Quick Info -->
+        <div class="md:col-span-4 flex flex-col gap-6 md:pt-4">
+             <div class="p-6 bg-base-200/50 backdrop-blur-sm rounded-2xl border border-base-content/5">
+                <span class="block text-sm font-bold uppercase tracking-widest text-base-content/50 mb-1">Location</span>
+                <span class="text-lg font-medium">Coahuila, Mexico</span>
+             </div>
+             <div class="p-6 bg-base-200/50 backdrop-blur-sm rounded-2xl border border-base-content/5">
+                <span class="block text-sm font-bold uppercase tracking-widest text-base-content/50 mb-1">Focus</span>
+                <span class="text-lg font-medium">React, Performance, AI</span>
+             </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid md:grid-cols-12 gap-8 md:gap-12">
+        
+        <!-- Left Column: Experience -->
+        <div class="md:col-span-7 space-y-12">
+            <h2 class="text-sm font-bold uppercase tracking-widest text-primary mb-8 flex items-center gap-4">
+                <span class="w-8 h-[1px] bg-primary"></span> Experience
+            </h2>
+
+            <TimelineItem
+                client:visible
+                title="Senior Software Engineer"
+                company="Vanco"
+                startDate="Aug 2023"
+                endDate="Feb 2026"
+                isOpen={true}
+                color="primary"
+            >
+                <p class="text-base-content/80 leading-relaxed mb-4">
+                    Spearheaded the modernization of a large-scale giving platform. Migrated legacy front-end applications to a performant Vite/React architecture, achieving a 40% reduction in build times. Collaborated across the full stack, maintaining and enhancing core backend services in C# and .NET to ensure system reliability and scalability.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge badge-sm badge-ghost">React</span>
+                    <span class="badge badge-sm badge-ghost">Vite</span>
+                    <span class="badge badge-sm badge-ghost">C#</span>
+                    <span class="badge badge-sm badge-ghost">.NET</span>
+                    <span class="badge badge-sm badge-ghost">Performance</span>
+                </div>
+            </TimelineItem>
+
+            <TimelineItem
+                client:visible
+                title="Lead AI Workflows"
+                company="Vanco (Internal Initiative)"
+                startDate="2024"
+                endDate="Feb 2026"
+                isOpen={true}
+                color="secondary"
+            >
+                <p class="text-base-content/80 leading-relaxed">
+                        Designed and implemented AI-assisted coding workflows, establishing new standards for code quality and review processes across the engineering organization.
+                </p>
+            </TimelineItem>
+
+            <TimelineItem
+                client:visible
+                title="React Front End Developer"
+                company="Jonajo Consulting"
+                startDate="Nov 2021"
+                endDate="May 2023"
+                color="primary"
+            >
+                <p class="text-base-content/80 leading-relaxed mb-4">
+                    Contributed to the rework of a major web application using React, OpenLayers, and Redux. Implemented comprehensive reporting dashboards for device metrics like occupancy heatmaps and network status. Optimized application performance and collaborated with cross-functional teams to ensure high-quality delivery.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge badge-sm badge-ghost">React</span>
+                    <span class="badge badge-sm badge-ghost">Redux</span>
+                    <span class="badge badge-sm badge-ghost">OpenLayers</span>
+                    <span class="badge badge-sm badge-ghost">Jest</span>
+                </div>
+            </TimelineItem>
+
+            <TimelineItem
+                client:visible
+                title="Senior Software Dev. Engineer"
+                company="Hexaware Technologies"
+                startDate="Sep 2019"
+                endDate="Nov 2021"
+                color="primary"
+            >
+                <p class="text-base-content/80 leading-relaxed mb-4">
+                        Spearheaded a complex web application for a global auditing firm using React, SASS, and Storybook. Created a smart decision tree that reduced auditing decision time by 1-2 weeks. Led the development of a scalable .NET Core and SQL Server backend with a microservices architecture to support high traffic.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge badge-sm badge-ghost">React</span>
+                    <span class="badge badge-sm badge-ghost">.NET Core</span>
+                    <span class="badge badge-sm badge-ghost">SQL Server</span>
+                    <span class="badge badge-sm badge-ghost">Microservices</span>
+                </div>
+            </TimelineItem>
+
+            <TimelineItem
+                client:visible
+                title="Software Engineer"
+                company="Calisis Group"
+                startDate="Jan 2018"
+                endDate="Sep 2019"
+                color="primary"
+            >
+                <p class="text-base-content/80 leading-relaxed mb-4">
+                    Developed real-time web dashboards with React and .NET Core to track manufacturing KPIs. Improved data accuracy and reduced processing time by 40% through direct machine integration. Built BI solutions that saved 8 hours of data processing time daily.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge badge-sm badge-ghost">React</span>
+                    <span class="badge badge-sm badge-ghost">.NET Core</span>
+                    <span class="badge badge-sm badge-ghost">Real-time</span>
+                    <span class="badge badge-sm badge-ghost">BI</span>
+                </div>
+            </TimelineItem>
+            
+             <h2 class="text-sm font-bold uppercase tracking-widest text-primary mt-16 mb-8 flex items-center gap-4">
+                <span class="w-8 h-[1px] bg-primary"></span> Education
+            </h2>
+            
+             <div class="relative pl-8 border-l border-base-content/10 group">
+                <div class="absolute left-[-5px] top-0 w-2.5 h-2.5 rounded-full bg-base-content/20"></div>
+                <h3 class="text-xl font-bold">B.S. Information Technologies</h3>
+                <p class="text-base-content/60 mb-2">Universidad Tecnologica de Coahuila</p>
+            </div>
+
+        </div>
+
+        <!-- Right Column: Skills & Philosophy -->
+        <div class="md:col-span-5 space-y-12">
+            
+            <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/5 sticky top-24">
+                <h2 class="text-sm font-bold uppercase tracking-widest text-secondary mb-6">Technologies</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-sm font-semibold mb-3 text-base-content/70">Core</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge badge-outline badge-lg p-4">React</span>
+                            <span class="badge badge-outline badge-lg p-4">TypeScript</span>
+                            <span class="badge badge-outline badge-lg p-4">Remix</span>
+                            <span class="badge badge-outline badge-lg p-4">C# & .NET</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-sm font-semibold mb-3 text-base-content/70">Build & Ops</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge badge-neutral p-3">Vite</span>
+                            <span class="badge badge-neutral p-3">Turbo</span>
+                            <span class="badge badge-neutral p-3">Azure</span>
+                            <span class="badge badge-neutral p-3">CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider my-8"></div>
+
+                <h2 class="text-sm font-bold uppercase tracking-widest text-secondary mb-4">Certifications</h2>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-warning" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                        <span class="text-sm font-medium">AWS Certified Cloud Practitioner</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-warning" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                        <span class="text-sm font-medium">AWS Serverless Developer</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+  </section>
+
+  <Footer slot="footer" />
 </BaseLayout>

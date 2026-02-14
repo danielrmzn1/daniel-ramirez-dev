@@ -2,31 +2,74 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/astro/Navbar.astro';
 import Footer from '../components/astro/Footer.astro';
-import ThemeToggle from '../components/react/ThemeToggle';
+import ThemeController from '../components/react/ThemeController';
+import ContactForm from '../components/react/ContactForm';
+import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
 ---
 
 <BaseLayout title="Contact | Daniel Ramirez">
 	<Navbar slot="header">
-		<ThemeToggle client:load slot="right" />
+		<ThemeController client:only="react" slot="right" />
 	</Navbar>
 
-	<section class="py-20 px-4 md:px-8 max-w-4xl mx-auto">
-		<h1 class="text-4xl font-bold mb-8 tracking-tight">Get in Touch</h1>
-		<div class="card bg-base-200 shadow-sm">
-			<div class="card-body">
-				<p class="text-lg mb-6">
-					I'm always open to new opportunities and collaborations. Feel free to reach out!
-				</p>
-				<div class="flex flex-col gap-4">
-					<a href="mailto:hello@example.com" class="btn btn-primary">Email Me</a>
-					<div class="divider">OR</div>
-					<div class="flex gap-4 justify-center">
-						<a href="https://github.com/danielrmzn1" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
-						<a href="https://www.linkedin.com/in/rmzdaniel/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn</a>
-					</div>
-				</div>
-			</div>
-		</div>
+  <!-- Background decorative elements -->
+  <div class="fixed inset-0 -z-10 pointer-events-none opacity-20 dark:opacity-10 overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/30 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+  </div>
+
+	<section class="relative py-20 px-4 md:px-8 max-w-6xl mx-auto">
+    <div class="mb-16">
+      <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.9]">
+        LET'S BUILD <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">SOMETHING</span> <br/>
+        GREAT TOGETHER.
+      </h1>
+      <p class="text-xl md:text-2xl font-light text-base-content/80 max-w-2xl leading-relaxed">
+        Have a project in mind or want to discuss modern web architecture? I'm always open to new opportunities and collaborations.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-12">
+      <!-- Contact Info -->
+      <div class="md:col-span-5 space-y-8">
+        <div class="bg-base-200/50 backdrop-blur-sm rounded-3xl p-8 border border-base-content/5 h-full">
+          <h2 class="text-2xl font-bold mb-8">Contact Information</h2>
+          
+          <div class="space-y-6">
+            
+            <div class="flex items-center gap-4 group">
+              <div class="w-12 h-12 rounded-full bg-base-100 flex items-center justify-center">
+                <MapPin size={20} />
+              </div>
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wider opacity-50">Location</div>
+                <div class="text-lg font-medium">Coahuila, Mexico</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider my-8"></div>
+
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider opacity-50 mb-4">Social Profiles</div>
+            <div class="flex gap-4">
+              <a href="https://github.com/danielrmzn1" target="_blank" rel="noopener noreferrer" class="btn btn-circle btn-ghost hover:bg-base-content hover:text-base-100 transition-all">
+                <Github size={24} />
+              </a>
+              <a href="https://www.linkedin.com/in/rmzdaniel/" target="_blank" rel="noopener noreferrer" class="btn btn-circle btn-ghost hover:bg-[#0077b5] hover:text-white transition-all">
+                <Linkedin size={24} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="md:col-span-7">
+        <ContactForm client:visible />
+      </div>
+    </div>
 	</section>
 
 	<Footer slot="footer" />
