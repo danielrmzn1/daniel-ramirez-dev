@@ -48,14 +48,11 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
     <div className={`relative pl-8 border-l border-base-content/10 ${borderClass} transition-colors duration-300 group`}>
       <div className={`absolute left-[-5px] top-2 w-2.5 h-2.5 rounded-full bg-base-content/20 ${dotClass} transition-colors`}></div>
       
-      <details 
-        ref={detailsRef}
-        className={`group/acc ${isClosing ? 'is-closing' : ''} ${open ? 'is-open' : ''}`} 
-        open={open}
-      >
-        <summary 
+      <div className={`group/acc ${open ? 'is-open' : ''}`}>
+        <button 
           onClick={handleClick}
-          className="list-none cursor-pointer outline-none [&::-webkit-details-marker]:hidden"
+          className="w-full text-left list-none cursor-pointer outline-none [&::-webkit-details-marker]:hidden"
+          aria-expanded={open}
         >
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-1 pr-4">
             <h3 className={`text-2xl font-bold ${colorClass} transition-colors`}>{title}</h3>
@@ -66,17 +63,17 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
             {subtitle && <span className="hidden"> - {subtitle}</span>}
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
-              className={`w-4 h-4 opacity-50 transition-transform duration-300 ${open && !isClosing ? 'rotate-180' : 'rotate-0'}`} 
+              className={`w-4 h-4 opacity-50 transition-transform duration-300 ${open ? 'rotate-180' : 'rotate-0'}`} 
               viewBox="0 0 20 20" 
               fill="currentColor"
             >
               <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </div>
-        </summary>
+        </button>
         
         <div 
-          className={`grid transition-[grid-template-rows] duration-300 ease-out ${open && !isClosing ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+          className={`grid transition-[grid-template-rows] duration-300 ease-out ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
         >
           <div className="overflow-hidden">
             <div className="pb-4">
@@ -84,7 +81,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
             </div>
           </div>
         </div>
-      </details>
+      </div>
     </div>
   );
 };
