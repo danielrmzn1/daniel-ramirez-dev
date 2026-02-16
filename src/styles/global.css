@@ -1,6 +1,22 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Custom DaisyUI theme with better contrast for accessibility */
+@theme {
+  --daisyui-themes: light, dark;
+}
+
+/* Light theme - use brighter primary for better contrast */
+[data-theme="light"] {
+  --color-primary: oklch(0.55 0.25 262); /* Brighter blue-purple */
+}
+
+/* Dark theme - use much brighter primary for WCAG AA compliance */
+[data-theme="dark"] {
+  --color-primary: oklch(0.75 0.20 262); /* Much brighter blue-purple for dark backgrounds */
+  --color-base-200: oklch(0.22 0.013 262); /* Slightly lighter base-200 for better contrast */
+}
+
 @keyframes neon-pulse {
   0%, 100% {
     box-shadow: 0 0 8px rgba(16, 185, 129, 0.6), 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.15);
