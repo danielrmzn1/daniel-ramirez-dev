@@ -5,7 +5,10 @@ import Footer from '../components/astro/Footer.astro';
 import ThemeController from '../components/react/ThemeController';
 ---
 
-<BaseLayout title="Projects | Daniel Ramirez">
+<BaseLayout 
+	title="Projects | Daniel Ramirez"
+	description="Explore a showcase of high-performance web applications and technical projects developed by Daniel Ramirez, focusing on modern frontend engineering."
+>
 	<Navbar slot="header">
 		<ThemeController client:only="react" slot="right" />
 	</Navbar>
