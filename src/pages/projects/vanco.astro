@@ -1,0 +1,39 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const project = {
+	title: "Vanco Payments Modernization",
+	company: "Vanco Payments",
+	role: "Senior Software Engineer",
+	duration: "Aug 2023 - Feb 2026",
+	description: "Led a comprehensive front-end modernization for a multi-faceted giving platform serving thousands of churches, focusing on performance, developer experience, and AI integration.",
+	tags: ["React", "Vite", "TypeScript", "C# .NET 8", "AI Integration", "Azure DevOps"]
+};
+---
+
+<ProjectLayout {...project}>
+	<section>
+		<h2>Project Overview</h2>
+		<p>
+			As a Senior Software Engineer at Vanco Payments, I spearheaded the technical evolution of our core giving platform. The primary goal was to move away from legacy architectures towards a modern, high-performance, and AI-enabled ecosystem that could serve our diverse client base more efficiently.
+		</p>
+	</section>
+
+	<section>
+		<h2>Key Contributions</h2>
+		<ul>
+			<li><strong>Front-end Modernization:</strong> Led the migration of multiple core React applications from Create React App to Vite, achieving a 40% reduction in build times and significantly improving the developer feedback loop.</li>
+			<li><strong>AI Feature Integration:</strong> Designed and implemented intelligent form validation and predictive search features, leveraging LLMs to enhance the donor experience and reduce input errors.</li>
+			<li><strong>AI-Assisted Workflows:</strong> Developed custom AI agents to automate unit test generation and documentation, increasing team velocity by approximately 25%.</li>
+			<li><strong>Legacy Refactoring:</strong> Systematically replaced deprecated class components with modern functional patterns and hooks, establishing a standardized design system used across 3 major product lines.</li>
+			<li><strong>Full-Stack Collaboration:</strong> Contributed to the development of supporting microservices using C# .NET 8 and SQL Server, ensuring seamless integration between the modern front-end and robust back-end systems.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Impact & Results</h2>
+		<p>
+			The modernization efforts resulted in a measurably faster and more stable platform. The integration of AI features not only improved user satisfaction but also paved the way for more intelligent giving experiences. Our technical debt was reduced by 60%, allowing the team to focus on innovation rather than maintenance.
+		</p>
+	</section>
+</ProjectLayout>
