@@ -3,6 +3,102 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/astro/Navbar.astro';
 import Footer from '../components/astro/Footer.astro';
 import ThemeController from '../components/react/ThemeController';
+import TimelineItem from '../components/react/TimelineItem';
+import { NotebookPen, LayoutTemplate, Database, Server, ExternalLink } from 'lucide-react';
+
+const experience = [
+	{
+		company: "Vanco Payments",
+		role: "Senior Software Engineer",
+		startDate: "Aug 2023",
+		endDate: "Feb 2026",
+		isOpen: true,
+		color: "primary",
+		projects: [
+			{
+				title: "Vanco Online Modernization",
+				summary: "Led the migration of the core giving platform from Create React App to Vite, improving build times by 40% and enhancing developer experience. Integrated AI-driven features for donor interaction.",
+				tags: ["React", "Vite", "AI Integration"],
+				slug: "vanco"
+			},
+			{
+				title: "Merchant Portal Utils",
+				summary: "Developed key utility modules for the merchant management portal, ensuring seamless data synchronization and reporting capabilities.",
+				tags: ["React", "TypeScript", "Microservices"],
+				slug: undefined
+			},
+			{
+				title: "Internal AI Workflows",
+				summary: "Designed and implemented AI-assisted coding and review workflows, standardizing code quality across engineering teams.",
+				tags: ["AI Agents", "Automation", "LLMs"],
+				slug: undefined
+			}
+		]
+	},
+	{
+		company: "Jonajo Consulting",
+		role: "React Front End Developer",
+		startDate: "Nov 2021",
+		endDate: "May 2023",
+		color: "primary",
+		projects: [
+			{
+				title: "Device Metrics Dashboard",
+				summary: "Built a comprehensive dashboard for tracking IoT device metrics, featuring real-time occupancy heatmaps and network status reporting using OpenLayers.",
+				tags: ["React", "OpenLayers", "Redux"],
+				slug: undefined
+			},
+			{
+				title: "Reporting Module",
+				summary: "Implemented a dynamic reporting engine allowing users to generate and export detailed analytics on device performance and usage trends.",
+				tags: ["Data Visualization", "Analytics"],
+				slug: undefined
+			}
+		]
+	},
+	{
+		company: "Hexaware Technologies",
+		role: "Senior Software Dev. Engineer",
+		startDate: "Sep 2019",
+		endDate: "Nov 2021",
+		color: "secondary",
+		projects: [
+			{
+				title: "Auditing Smart Tree",
+				summary: "Spearheaded the development of a decision-tree application for global auditors. Reduced decision-making time by ~2 weeks through intelligent data processing.",
+				tags: ["React", "SASS", "Storybook"],
+				slug: undefined
+			},
+			{
+				title: "Microservices Backend",
+				summary: "Architected a scalable backend using .NET Core and SQL Server to support high-traffic auditing operations.",
+				tags: [".NET Core", "SQL Server", "Microservices"],
+				slug: undefined
+			}
+		]
+	},
+	{
+		company: "Calisis Group",
+		role: "Software Engineer",
+		startDate: "Jan 2018",
+		endDate: "Sep 2019",
+		color: "secondary",
+		projects: [
+			{
+				title: "Manufacturing KPI Dashboard",
+				summary: "Developed real-time production dashboards integrating directly with factory machines. Improved data accuracy and reduced manual processing time by 40%.",
+				tags: ["React", ".NET Core", "Real-time"],
+				slug: undefined
+			},
+			{
+				title: "BI Data Systems",
+				summary: "Created Business Intelligence solutions that automated data collection, saving ~8 hours of daily processing time.",
+				tags: ["BI", "Automation", "Data Acquisition"],
+				slug: undefined
+			}
+		]
+	}
+];
 ---
 
 <BaseLayout 
@@ -13,28 +109,98 @@ import ThemeController from '../components/react/ThemeController';
 		<ThemeController client:only="react" slot="right" />
 	</Navbar>
 
-	<section class="py-20 px-4 md:px-8 max-w-6xl mx-auto">
-		<!-- Work in Progress Notice -->
-		<div role="alert" class="alert alert-warning mb-10 shadow-lg">
-			<svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-			<div>
-				<h3 class="font-bold">Work in Progress</h3>
-				<div class="text-xs">This section is currently under construction. Check back soon for more updates!</div>
-			</div>
+	<section class="py-20 px-4 md:px-8 max-w-5xl mx-auto">
+		<div class="mb-16">
+			<h1 class="text-4xl sm:text-5xl font-black mb-6 tracking-tighter">
+				<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">FEATURED</span> WORK
+			</h1>
+			<p class="text-xl text-base-content/70 max-w-2xl leading-relaxed">
+				A timeline of technical challenges solved, products built, and value delivered across my career.
+			</p>
 		</div>
 
-		<h1 class="text-4xl font-bold mb-12 tracking-tight">Projects</h1>
-		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-			<div class="card bg-base-100 shadow-sm border border-base-300">
-				<div class="card-body">
-					<h3 class="card-title">Project One</h3>
-					<p>A description of the first project.</p>
-					<div class="card-actions justify-end mt-4">
-						<div class="badge badge-outline">TypeScript</div>
-						<div class="badge badge-outline">React</div>
+		<div class="space-y-12">
+			{experience.map((item) => (
+				<TimelineItem
+					client:visible
+					title={item.role}
+					company={item.company}
+					startDate={item.startDate}
+					endDate={item.endDate}
+					isOpen={item.isOpen}
+					color={item.color as 'primary' | 'secondary'}
+				>
+					<div class="grid gap-6 mt-6">
+						{item.projects.map((project) => (
+							project.slug ? (
+								<a 
+									href={`/projects/${project.slug}`}
+									class="card bg-base-200/40 hover:bg-base-200/70 transition-all border border-base-content/5 hover:border-primary/20 hover:shadow-sm group/card cursor-pointer relative overflow-hidden"
+								>
+									<div class="card-body p-6 relative z-10">
+										<div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+											<div class="flex-grow">
+												<h4 class="card-title text-xl font-bold mb-2 flex items-center gap-2 group-hover/card:text-primary transition-colors">
+													{project.title}
+												</h4>
+												<p class="text-base-content/70 leading-relaxed mb-4">
+													{project.summary}
+												</p>
+												<div class="flex flex-wrap gap-2">
+													{project.tags.map(tag => (
+														<span class="badge badge-sm badge-outline opacity-70 bg-base-100">{tag}</span>
+													))}
+												</div>
+											</div>
+											
+											<div class="hidden md:flex flex-col items-end justify-between self-stretch shrink-0">
+												<span class="text-xs font-bold uppercase tracking-wider text-base-content/40 group-hover/card:text-primary transition-colors">
+													View Case Study
+												</span>
+												<div class="w-8 h-8 rounded-full bg-base-100 flex items-center justify-center text-primary opacity-0 group-hover/card:opacity-100 transform translate-x-2 group-hover/card:translate-x-0 transition-all duration-300">
+													<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+													</svg>
+												</div>
+											</div>
+
+                                            <!-- Mobile CTA -->
+                                            <div class="flex md:hidden items-center text-primary text-sm font-bold mt-2">
+                                                Read Case Study 
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                </svg>
+                                            </div>
+										</div>
+									</div>
+                                    <!-- Decorative Hover Background -->
+                                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-primary/5 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+								</a>
+							) : (
+								<div class="card bg-base-200/20 border border-base-content/5">
+									<div class="card-body p-6">
+										<div class="flex flex-col gap-4">
+											<div>
+												<h4 class="card-title text-xl font-bold mb-2 text-base-content/80">
+													{project.title}
+												</h4>
+												<p class="text-base-content/60 leading-relaxed mb-4">
+													{project.summary}
+												</p>
+												<div class="flex flex-wrap gap-2">
+													{project.tags.map(tag => (
+														<span class="badge badge-sm badge-ghost opacity-50">{tag}</span>
+													))}
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							)
+						))}
 					</div>
-				</div>
-			</div>
+				</TimelineItem>
+			))}
 		</div>
 	</section>
 
